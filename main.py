@@ -24,11 +24,10 @@ client.connect(mqtt_hostname, 1883, 60)
 
 
 def say(update, context):
-    print(f'message\n:{update.message}')
+    #print(f'message\n:{update.message}')
     text = update.message.text.split("/say ")[1]
     update.message.reply_text(f'OK {update.effective_user.first_name}, dann sag ich jetzt "{text}"')
-    print(f'user:{update.message.chat.username}')
-    print(f'text:{text}')
+    print(f'user:{update.message.chat.username} - text:{text}')
     client.publish("smartBots/tts/say", json.dumps({"text": text, "lang": "de"}))
 
 
